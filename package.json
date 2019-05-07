@@ -1,7 +1,8 @@
 {
-  "name": "angular6-json-schema-form-app",
-  "version": "7.1.0",
-  "author": "https://github.com/hamzahamidi/Angular6-json-schema-form/graphs/contributors",
+  "name": "@oznu/ngx-bs4-jsonform",
+  "private": true,
+  "version": "7.1.0-beta.1",
+  "author": "https://github.com/oznu/graphs/contributors",
   "description": "Angular JSON Schema Form builder Demo",
   "engines": {
     "node": ">=8.9.0",
@@ -24,12 +25,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hamzahamidi/angular6-json-schema-form"
+    "url": "git+https://github.com/oznu"
   },
   "bugs": {
-    "url": "https://github.com/hamzahamidi/angular6-json-schema-form/issues"
+    "url": "https://github.com/oznu/issues"
   },
-  "homepage": "https://github.com/hamzahamidi/Angular6-json-schema-form#readme",
+  "homepage": "https://github.com/oznu#readme",
   "scripts": {
     "ng": "ng",
     "prestart": "npm run buildlibdev",
