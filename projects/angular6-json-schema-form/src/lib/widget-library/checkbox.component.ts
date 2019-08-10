@@ -9,7 +9,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
   template: `
     <label
       [attr.for]="'control' + layoutNode?._id"
-      [class]="options?.itemLabelHtmlClass || ''">
+      [class]="options?.itemLabelHtmlClass || ' hb-uix-switch'">
       <input *ngIf="boundControl"
         [formControl]="formControl"
         [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
@@ -36,6 +36,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
       <span *ngIf="options?.title"
         [style.display]="options?.notitle ? 'none' : ''"
         [innerHTML]="options?.title"></span>
+      <span class="hb-uix-slider hb-uix-round"></span>
     </label>`,
 })
 export class CheckboxComponent implements OnInit {

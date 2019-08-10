@@ -1,8 +1,8 @@
 {
     "name": "@oznu/ngx-bs4-jsonform",
-    "version": "7.1.0-beta.1",
+    "version": "7.3.1",
     "description": "Angular JSON Schema Form builder",
-    "author": "https://github.com/oznu/ngx-bs4-jsonform/graphs/contributors",
+    "author": "https://github.com/hamzahamidi/Angular6-json-schema-form/graphs/contributors",
     "keywords": [
         "Angular",
         "ng",
@@ -20,17 +20,17 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/oznu/ngx-bs4-jsonform"
+        "url": "git+https://github.com/hamzahamidi/angular6-json-schema-form"
     },
     "bugs": {
-        "url": "https://github.com/oznu/ngx-bs4-jsonform/issues"
+        "url": "https://github.com/hamzahamidi/angular6-json-schema-form/issues"
     },
+    "private": false,
     "peerDependencies": {
-        "@angular/common": ">=6.0.0",
-        "@angular/core": ">=6.0.0",
-        "@angular/forms": ">=6.0.0",
-        "@angular/platform-browser": ">=6.0.0",
-        "@angular/flex-layout": ">=6.0.0-beta.16",
+        "@angular/common": ">=8.0.0",
+        "@angular/core": ">=8.0.0",
+        "@angular/forms": ">=8.0.0",
+        "@angular/platform-browser": ">=8.0.0",
         "rxjs": ">=6.0.0",
         "ajv": "^6.0.1",
         "lodash-es": "^4.17.11"
