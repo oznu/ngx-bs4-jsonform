@@ -34,13 +34,13 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
         <span aria-hidden="true">&times;</span>
         <span class="sr-only">Close</span>
       </button>
-      <div *ngIf="options?.messageLocation === 'top'">
+      <div *ngIf="options?.messageLocation === 'top' && layoutNode?.type !== 'array'">
         <p *ngIf="options?.helpBlock"
           class="help-block"
           [innerHTML]="options?.helpBlock"></p>
       </div>
 
-      <label *ngIf="options?.title && layoutNode?.type !== 'tab'"
+      <label *ngIf="options?.title && layoutNode?.type !== 'tab' && layoutNode?.type !== 'array'"
         [attr.for]="'control' + layoutNode?._id"
         [class]="options?.labelHtmlClass || ''"
         [class.sr-only]="options?.notitle"
