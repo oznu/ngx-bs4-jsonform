@@ -19,7 +19,7 @@ import { JsonSchemaFormService, TitleMapItem } from '../json-schema-form.service
         [attr.for]="'control' + layoutNode?._id + '/' + checkboxItem.value"
         [class]="(options?.itemLabelHtmlClass || '') + (checkboxItem.checked ?
           (' ' + (options?.activeClass || '') + ' ' + (options?.style?.selected || '')) :
-          (' ' + (options?.style?.unselected || '')))">
+          (' ' + (options?.style?.unselected || ''))) + ' hb-uix-switch'">
         <input type="checkbox"
           [attr.required]="options?.required"
           [checked]="checkboxItem.checked"
@@ -31,6 +31,7 @@ import { JsonSchemaFormService, TitleMapItem } from '../json-schema-form.service
           [value]="checkboxItem.value"
           (change)="updateValue($event)">
         <span [innerHTML]="checkboxItem.name"></span>
+        <span class="hb-uix-slider hb-uix-round"></span>
       </label>
     </div>
 
@@ -41,18 +42,19 @@ import { JsonSchemaFormService, TitleMapItem } from '../json-schema-form.service
           [attr.for]="'control' + layoutNode?._id + '/' + checkboxItem.value"
           [class]="(options?.itemLabelHtmlClass || '') + (checkboxItem.checked ?
             (' ' + (options?.activeClass || '') + ' ' + (options?.style?.selected || '')) :
-            (' ' + (options?.style?.unselected || '')))">
+            (' ' + (options?.style?.unselected || ''))) + ' hb-uix-switch'">
           <input type="checkbox"
             [attr.required]="options?.required"
             [checked]="checkboxItem.checked"
             [class]="options?.fieldHtmlClass || ''"
             [disabled]="controlDisabled"
-            [id]="options?.name + '/' + checkboxItem.value"
+            [id]="'control' + layoutNode?._id + '/' + checkboxItem.value"
             [name]="checkboxItem?.name"
             [readonly]="options?.readonly ? 'readonly' : null"
             [value]="checkboxItem.value"
             (change)="updateValue($event)">
           <span [innerHTML]="checkboxItem?.name"></span>
+          <span class="hb-uix-slider hb-uix-round"></span>
         </label>
       </div>
     </div>`,
@@ -80,15 +82,16 @@ export class CheckboxesComponent implements OnInit {
     this.layoutOrientation = (this.layoutNode.type === 'checkboxes-inline' ||
       this.layoutNode.type === 'checkboxbuttons') ? 'horizontal' : 'vertical';
     this.jsf.initializeControl(this);
+    const formArray = this.jsf.getFormControl(this);
     this.checkboxList = buildTitleMap(
       this.options.titleMap || this.options.enumNames, this.options.enum, true
     );
-    if (this.boundControl) {
-      const formArray = this.jsf.getFormControl(this);
-      this.checkboxList.forEach(checkboxItem =>
-        checkboxItem.checked = formArray.value.includes(checkboxItem.value)
-      );
-    }
+    setTimeout(() => {
+      for (const checkbox of this.checkboxList) {
+        checkbox.checked = formArray.value.includes(checkbox.value);
+      }
+      this.jsf.updateArrayCheckboxList(this, this.checkboxList);
+    });
   }
 
   updateValue(event) {

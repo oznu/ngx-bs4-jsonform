@@ -69,8 +69,21 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
     </fieldset>`,
   styles: [`
     .legend { font-weight: bold; }
-    .expandable > legend:before, .expandable > label:before  { content: '▶'; padding-right: .3em; }
-    .expanded > legend:before, .expanded > label:before  { content: '▼'; padding-right: .2em; }
+    .expandable > legend, .expandable > label, .expanded > legend, .expanded > label  {
+      cursor: pointer;
+    }
+    .expandable > legend:before, .expandable > label:before  {
+      font-weight: 900;
+      font-family: 'Font Awesome 5 Free';
+      content: '\\f054';
+      padding-right: .3em;
+    }
+    .expanded > legend:before, .expanded > label:before  {
+      font-weight: 900;
+      font-family: 'Font Awesome 5 Free';
+      content: '\\f078';
+      padding-right: .2em;
+    }
   `],
 })
 export class SectionComponent implements OnInit {
