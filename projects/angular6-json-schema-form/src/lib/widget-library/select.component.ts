@@ -1,8 +1,8 @@
 import { AbstractControl } from '@angular/forms';
 import { buildTitleMap, isArray } from '../shared';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { JsonSchemaFormService } from '../json-schema-form.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -64,7 +64,7 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
       </select>
     </div>`,
 })
-export class SelectComponent implements OnInit {
+export class SelectComponent implements OnInit, OnDestroy {
   formControl: AbstractControl;
   controlName: string;
   controlValue: any;
@@ -73,6 +73,7 @@ export class SelectComponent implements OnInit {
   options: any;
   selectList: any[] = [];
   isArray = isArray;
+  valueChanges: Subscription;
   @Input() layoutNode: any;
   @Input() layoutIndex: number[];
   @Input() dataIndex: number[];
@@ -88,6 +89,18 @@ export class SelectComponent implements OnInit {
       this.options.enum, !!this.options.required, !!this.options.flatList
     );
     this.jsf.initializeControl(this);
+
+    this.valueChanges = this.formControl.valueChanges.subscribe((change) => {
+      if (change === 'null') {
+        this.formControl.setValue(null);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.valueChanges) {
+      this.valueChanges.unsubscribe();
+    }
   }
 
   updateValue(event) {
