@@ -375,6 +375,11 @@ export class JsonSchemaFormService {
     parentCtx: any = {}, childNode: any = null, index: number = null
   ): string {
     const parentNode = parentCtx.layoutNode;
+
+    if (parentNode.options.buttonText) {
+      return parentNode.options.buttonText;
+    }
+
     const parentValues: any = this.getFormControlValue(parentCtx);
     const isArrayItem =
       (parentNode.type || '').slice(-5) === 'array' && isArray(parentValues);
