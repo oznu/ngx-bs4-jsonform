@@ -295,6 +295,9 @@ export class Bootstrap4FrameworkComponent implements OnInit, OnChanges {
       case 'fieldset':
         this.widgetOptions.title = this.options.title;
         return null;
+      case 'array':
+        this.widgetOptions.title = this.options.title;
+        return null;
       default:
         this.widgetOptions.title = null;
         return this.jsf.setItemTitle(this);
